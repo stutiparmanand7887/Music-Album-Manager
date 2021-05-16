@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<html>
+        <title>Contact Us</title>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+          <style>
+              body{
+  margin:0;
+}
+.box{
+  background: url("https://i.pinimg.com/originals/56/92/09/569209d034861bb2886dd17fccf25541.jpg");
+  color: white;
+  text-align:center;
+  z-index:1;
+}
+.text{
+    padding: 100px 0px;
+}
+
+.box p{
+  font-size:20px;
+}
+.red{
+  color:orangered;
+}
+.redline{
+  width:200px;
+  height:3px;
+  background-color:rgb(24, 24, 23);
+  border:none;
+}
+.touch h2{
+  padding-top: 0px;
+  text-align: center;
+}
+.form-margin{
+  margin-top: 100px;
+}
+.left{
+  text-align:left;
+}
+.get{
+  background-color: rgb(136, 136, 128);
+}
+h3{
+  font-variant:bold;
+}
+.main{
+  background-color:rgb(70, 36, 9) ;
+  
+   border:10px solid rgb(32, 25, 14);
+   background-repeat:repeat space;
+   background-size: auto;
+  
+}
+.col-lg-4 h1{
+  color:white
+}
+.col-lg-4 h3{
+  color : rgb(241, 243, 174);
+  text-shadow: white;
+}
+.redline-address{
+  border:none;
+  height:3px;
+  background-color:rgb(255, 174, 0);
+  width:200px;
+  margin-bottom:20px;
+}
+.address{
+  padding-top:0%;
+}
+.address p{
+  font-weight:bold;
+  color:whitesmoke;
+  margin:20px;
+  b
+}
+.phone-e{
+  padding:20px 0;
+}
+.logo img{
+  height:90px;
+  width:150px;
+  z-index:2;
+  float:left;
+  margin-top:10px;
+}
+.bottom-gap{
+  margin-bottom:100px;
+}
+/validation css/
+input.ng-valid {
+  background-color:#dff0d8;
+}
+input.ng-invalid {
+    background-color:#f2dede;
+}
+input.ng-pristine{
+  background-color:white;
+}
+textarea.ng-invalid {
+    background-color:#f2dede;
+}
+textarea.ng-pristine{
+  background-color:white;
+}
+textarea.ng-valid {
+  background-color:#dff0d8;
+}
+
+          </style>
+        </head>
+        <body ng-app="">
+        
+          <div class="box">
+            <div class="logo">
+              <img src= "logo.png" alt= "logo">
+            </div>
+            <div class="text">
+            <h1>Contact <span class="red">Us</span></h1>
+            <hr class="redline">
+            <p>Have Questions ? We have answers contact us</p>
+            </div>
+          </div>
+        <div class= " get">
+          <div class="touch">
+            <h1 align =center>GET IN TOUCH</h1>
+            <hr class="redline">
+          </div>
+          </div>
+          
+
+         <!--<form action="" method="POST" name="contact-form">
+          <div class="container form-margin">
+            <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>    
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="form-group">
+            <input type="text" class="form-control" placeholder="First Name" ng-model="firstname" name="firstname" required>    
+              </div>
+            <div class="form-group">
+            <input type="text" class="form-control" placeholder="Company Name" ng-model="company" name="company" required>    
+              </div>
+            <div class="form-group">
+            <input type="text" class="form-control" placeholder="Phone" ng-model="phone" name="firstname" required>    
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="form-group">
+            <input type="text" class="form-control" placeholder="Last Name" ng-model="lastname" name="lastname" required>    
+              </div>
+              <div class="form-group">
+            <input type="email" class="form-control" placeholder="E-mail" ng-model="email" name="email" required>    
+              </div>
+              <div class="form-group">
+            <input type="text" class="form-control" placeholder="Course" ng-model="course" name="course" required>    
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+            </div>
+          </div>...!
+          
+          <div class="container">
+            <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+            <div class="col-lg-8 col-md-8 col-sm-8">
+              <div class="form-group">
+            <textarea class="form-control" rows="6" placeholder="Message" ng-model="message" name="message" required></textarea>
+          </div>  
+              <div class="pager">
+              <button type="submit" class="btn btn-success">SEND MESSAGE</button>
+              </div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          
+          </div>
+          </form>
+          address-->
+          <div class= "main">
+          <div class="container address">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <h1>Our Address</h1>
+              <div class="redline-address"></div>
+              <h3>BANASTHALI VIDYAPITH</h3>
+              <div class="phone-e">
+              <p><span class="glyphicon glyphicon-envelope"> </span><B> info@musique.com</B></p>
+              <p><span class="glyphicon glyphicon-phone"></span> +91-97427 66186</p>
+              </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+              <!--map-->
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14293.511502694266!2d75.86225522711206!3d26.411279683535735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396e79b6cbaa6187%3A0x595f13dcfde1e66e!2sShri%20Daulatpura%2C%20Rajasthan%20304022!5e0!3m2!1sen!2sin!4v1620937457583!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        
+            </div>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+        
+          </div>
+          
+          <div class="bottom-gap"></div>
+          
+        </body>
+</html>

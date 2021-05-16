@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <title>Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  
+  <body>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://webproject-ab93a.firebaseapp.com/css/test.css" rel="stylesheet">
+    <script src="https://webproject-ab93a.firebaseapp.com/js/my_js.js"></script>
+    
+    <script>
+    //   firebase.auth().onAuthStateChanged(function(user) {
+    //   if (user) {
+    //     document.getElementById("lscallbutton").style.display="none";
+    //     document.getElementById("signoutbtn").style.display="block";
+    //   } else {
+    //     document.getElementById("lscallbutton").style.display="block";
+    //     document.getElementById("signoutbtn").style.display="none";
+    //   }
+    // });
+    </script>
+  <div id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" >
+      
+      <nav class="navbar navbar-default navbar-fixed-top" >
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#myPage">Explore Music</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="index.html#trending_music">Trending Music</a></li>
+              <li><a href="aboutus.html">About us</a></li>
+              <li><a href="contactus.html">CONTACT</a></li>
+              <li><a href="index1.html">Music Library</a></li>
+              <li id="item-signin"></li>
+              <li id="item-signup"></li>
+              <li id="item-logout"></li>
+              <!-- <li><button id="lscallbutton" type="button" class="btn navbar-btn btn-success" data-toggle="modal" data-target="#loginsignuppopup">Login/Signup</button></li> -->
+              <li><button id="signoutbtn" type="button" class="btn navbar-btn btn-danger" style="display: none" onclick="signoutuser(1);">Sign-out</button></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  </div>
+  
+  <div id="loginsignuppopup" class="modal fade" role="dialog" style="margin-top: 30px">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" onclick="clearallfields();">&times;</button>
+          <h4 class="modal-title">Login/Signup</h4>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#flogin" onclick="togglelsbutton('l');">Login</a></li>
+              <li><a data-toggle="tab" href="#fsignup" onclick="togglelsbutton('s');">Sign-up</a></li>
+          </ul>
+          <div class="tab-content">
+              <div id="flogin" class="tab-pane fade in active">
+                <h3>Login</h3>
+                <div id="lstatus" class="alert alert-success" style="display: none">
+                  <strong id="lstatusstrong">Success!</strong> Indicates a successful or positive action.
+                </div>
+                <hr>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="lemail" type="text" class="form-control" name="lemail" placeholder="Email">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="lpass" type="password" class="form-control" name="lpass" placeholder="Password">
+                </div>
+                <br>
+              </div>
+              <div id="fsignup" class="tab-pane fade">
+                <h3>Signup</h3>
+                <div id="sstatus" class="alert alert-success" style="display:none">
+                  <strong id="sstatusstrong">Success!</strong> Indicates a successful or positive action.
+                </div>
+                <hr>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input id="sname" type="text" class="form-control" name="sname" placeholder="Name">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                  <input id="semail" type="text" class="form-control" name="semail" placeholder="Email">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                  <input id="sphone" type="number" class="form-control" name="sphone" placeholder="Number">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="spass" type="password" class="form-control" name="spass" placeholder="Password">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input id="scpass" type="password" class="form-control" name="scpass" placeholder="Confirm Password">
+                </div>
+                <br>
+              </div>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="tgglelsbutton" type="button" class="btn btn-success" value="Login" onclick="validateform(tgglelsbutton.value);">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="loginsuccessmodal" class="modal fade" role="dialog" style="margin-top: 50px">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+        <div class="modal-body">
+          <div class="alert alert-success">
+                <strong>Success!</strong> Login Successfully!
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="signoutalert" class="modal fade" role="dialog" style="margin-top: 50px">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-success">
+                <strong>Success!</strong> Signout Successfully!
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>  
+    </div>
+  </div>  
+  <!-- Company name and theme-->
+  <div class="jumbotron text-center">
+  <h1>Musique</h1> 
+  <p>Let the music take you away.</p> 
+  <!--<form>-->
+  <!--  <div class="input-group">-->
+  <!--      <input type="text" class="form-control" size="50" placeholder="Search">-->
+  <!--      <div class="input-group-btn">-->
+  <!--        <button class="btn btn-default" type="button">-->
+  <!--          <i class="glyphicon glyphicon-search"></i>-->
+  <!--        </button>-->
+  <!--      </div>-->
+  <!--  </div> -->
+  <!--</form>-->
+  </div>
+  
+  <!-- Container for Trending Music-->
+  <div id="trending_music" class="container-fluid">
+  <div class="text-center">
+    <h2>Trending Music</h2>
+    <h4>Select a music to enjoy top trending music</h4>
+  </div>
+  <div class="row slideanim">
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading" style="height: 25rem;background: url(https://1.bp.blogspot.com/-xPChfPKppJU/X29eoi3fUYI/AAAAAAAACZw/f5X_Xu9z1b0n33FPZRrxZgc_pDqKW7rDwCLcBGAsYHQ/s1600/Jab%2BTak%2BMS%2BDhoni%2BLyrics%2B-%2BARMAAN%2BMALIK%2B-%2BMS%2BDhoni.jpgs) no-repeat; background-size: cover;">
+          
+        </div>
+        
+        <div class="panel-body">
+          <p><strong>Song:</strong> Jab Tak</p>
+          <p><strong>Movie:</strong> M.S Dhoni</p>
+          <p><strong>Artist:</strong> Armaan Malik</p>
+        </div>
+        <div class="panel-footer">
+          <h3></h3>
+          <h4></h4>
+          <!--<button class="btn btn-lg">Play Now</button>-->
+        </div>
+      </div>      
+    </div>     
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading" style="height: 25rem;background: url(https://a10.gaanacdn.com/gn_img/song/mGjKr1b6zX/jKrmE8VJb6/size_xxl_1575343168.webp) no-repeat; background-size: cover;">
+          
+        </div>
+        
+        <div class="panel-body">
+          <p><strong>Song:</strong> Tu hi yaar mera</p>
+          <p><strong>Movie:</strong> Pati,patni aur woh</p>
+          <p><strong>Artist:</strong> Arijit Singh</p>
+        </div>
+        <div class="panel-footer">
+          <h3></h3>
+          <h4></h4>
+          <!--<button class="btn btn-lg">Play Now</button>-->
+        </div>
+      </div>      
+    </div>       
+    <div class="col-sm-4 col-xs-12">
+      <div class="panel panel-default text-center">
+        <div class="panel-heading" style="height: 25rem;background: url(https://lyricsmouse.com/wp-content/uploads/2020/12/Abhi-Mujh-Mein-Kahin-lyrics.jpg) no-repeat; background-size: cover;">
+          
+        </div>
+        <div class="panel-body">
+          <p><strong>Song:</strong> Abhi mujh mein kahin</p>
+          <p><strong>Movie:</strong> Agneepath</p>
+          <p><strong>Artist:</strong> Sonu Nigam</p>
+        </div>
+        <div class="panel-footer">
+          <h3></h3>
+          <h4></h4>
+          <!--<button class="btn btn-lg">Play Now</button>-->
+        </div>
+      </div>      
+    </div>    
+  </div>
+  
+  <!-- Top trending artist names-->
+  
+  <div id="top_artists" class="container-fluid text-center bg-grey">
+  <h2>Top 3 Artists of the week</h2><br>
+  <div class="row text-center slideanim">
+    <div class="col-sm-4">
+      <div class="thumbnail" style="height: 30rem;background: url(https://i1.sndcdn.com/avatars-PvmAG48tBSapqaTx-B7eoAg-t240x240.jpg) no-repeat;background-size: cover;">
+        
+      </div>
+      <p><strong>Arjith Singh</strong></p>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="thumbnail" style="height: 30rem;background: url(https://static.toiimg.com/photo/msid-75008571/75008571.jpg?957870) no-repeat;background-size: cover;">
+        
+      </div>
+      <p><strong>Armaan Malik</strong></p>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="thumbnail" style="height: 30rem;background: url(https://i1.wp.com/www.opindia.com/wp-content/uploads/2020/11/sonu-1589074228.jpg?fit=715%2C402&ssl=1) no-repeat;background-size: cover;">
+        
+      </div>
+      <p><strong>Sonu Nigam</strong></p>
+    </div>
+    
+  </div><br>
+  </div>  
+  
+  
+  
+  <footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Developed By IT17</p>
+  </footer>
+  
+  <script>
+  $(document).ready(function(){
+
+    let loginBtn = `<a class="btn btn-success" hidden id="signin" href="/auth.html" hidden>Sign In</a>`;
+    let regBtn = `<a class="btn btn-primary" id="signup" href="/auth.html">Sign Up</a>`;
+    let logoutBtn = `<a class="btn btn-danger" id="logout">Logout</a>`;
+    document.getElementById('item-signin').innerHTML = loginBtn;
+    document.getElementById('item-signup').innerHTML = regBtn;
+
+    let user = sessionStorage.getItem('user');
+  if(user){
+    let userData = JSON.parse(user);
+    console.log(userData);
+    document.getElementById('item-signup').innerHTML = '';
+    document.getElementById('item-logout').innerHTML = logoutBtn;
+    document.getElementById('item-signin').innerHTML = '';
+  }else{
+    document.getElementById('item-logout').innerHTML = '';
+    document.getElementById('item-signin').innerHTML = loginBtn;
+    document.getElementById('item-signup').innerHTML = regBtn;
+  }
+
+  let logout = document.getElementById('logout');
+  
+  if(logout){
+    logout.onclick = () => {
+    sessionStorage.removeItem('user');
+    window.location.replace('/auth.html')
+  }
+  }
+
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+  
+      // Store hash
+      var hash = this.hash;
+  
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+  
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+  });
+  
+  
+
+  </script>
+  </body>
+  </html>
